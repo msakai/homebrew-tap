@@ -33,6 +33,6 @@ class Toysolver < Formula
       -1 2 3 0
     EOS
     result = shell_output("#{bin}/toysat simple.cnf")
-    assert_match /s UNSATISFIABLE/, result
+    assert_match(/s UNSATISFIABLE/, result)
   end
 end
