@@ -1,6 +1,6 @@
 class Liblbfgsb < Formula
   desc "Software for Large-scale Bound-constrained Optimization"
-  homepage "http://users.iems.northwestern.edu/~nocedal/lbfgsb.html"
+  homepage "https://users.iems.northwestern.edu/~nocedal/lbfgsb.html"
   url "http://users.iems.northwestern.edu/~nocedal/Software/Lbfgsb.3.0.tar.gz"
   sha256 "f5b9a1c8c30ff6bcc8df9b5d5738145f4cbe4c7eadec629220e808dcf0e54720"
   license "BSD-3-Clause"
