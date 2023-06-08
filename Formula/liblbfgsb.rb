@@ -9,6 +9,12 @@ class Liblbfgsb < Formula
   sha256 "f5b9a1c8c30ff6bcc8df9b5d5738145f4cbe4c7eadec629220e808dcf0e54720"
   license "BSD-3-Clause"
 
+  bottle do
+    root_url "https://github.com/msakai/homebrew-tap/releases/download/liblbfgsb-3.0"
+    sha256 cellar: :any,                 ventura:      "dfbd3baafc7e2d356f5a0e27e5b6fdbd7cf6896ef1d915947733ac82f05b7880"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "ea20496472cc2db0c3173a1ab3482a5ad1ef04b01c4ddb10c4b028a28c017466"
+  end
+
   depends_on "gcc" # for gfortran
   depends_on "openblas"
 
