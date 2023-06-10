@@ -1,8 +1,8 @@
 class Toysolver < Formula
   desc "Assorted decision procedures for SAT, SMT, Max-SAT, PB, MIP, etc."
   homepage "https://github.com/msakai/toysolver/"
-  url "https://hackage.haskell.org/package/toysolver-0.7.0/toysolver-0.7.0.tar.gz"
-  sha256 "f20d5449181cfdfa1c9ddedca3133a8b35fe4e4c62f3ca0e63e5fb389e431fe5"
+  url "https://hackage.haskell.org/package/toysolver-0.8.1/toysolver-0.8.1.tar.gz"
+  sha256 "aa7815204872ae243257262c55157155a6dffe4663d0219278640c8433e9c301"
   license "GPL-3.0-or-later"
   head "https://github.com/msakai/toysolver.git"
 
