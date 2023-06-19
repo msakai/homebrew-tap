@@ -8,6 +8,7 @@ class Liblbfgsb < Formula
   url "http://users.iems.northwestern.edu/~nocedal/Software/Lbfgsb.3.0.tar.gz"
   sha256 "f5b9a1c8c30ff6bcc8df9b5d5738145f4cbe4c7eadec629220e808dcf0e54720"
   license "BSD-3-Clause"
+  revision 1
 
   bottle do
     root_url "https://github.com/msakai/homebrew-tap/releases/download/liblbfgsb-3.0"
@@ -35,8 +36,20 @@ class Liblbfgsb < Formula
     shared_option = if OS.mac?
       ["-o", shared_lib]
     else
-      ["-Wl,-soname,#{shared_lib}", "-o", shared_lib]
+      File.write("liblbfgsb.map", <<-END)
+      {
+        global:
+          extern "C" {
+            setulb_;
+          };
+
+        local:
+          *;
+      };
+      END
+      ["-Wl,-soname,#{shared_lib}", "-Wl,--version-script,liblbfgsb.map", "-o", shared_lib]
     end
+
     system "gfortran", "-O2", "-shared", *shared_option, "-fPIC", *units.map { |name| "#{name}.f" },
            "-L#{Formula["openblas"].opt_lib}", "-lopenblas"
 
