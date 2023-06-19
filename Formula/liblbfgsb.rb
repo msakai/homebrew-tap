@@ -11,9 +11,9 @@ class Liblbfgsb < Formula
   revision 1
 
   bottle do
-    root_url "https://github.com/msakai/homebrew-tap/releases/download/liblbfgsb-3.0"
-    sha256 cellar: :any,                 ventura:      "dfbd3baafc7e2d356f5a0e27e5b6fdbd7cf6896ef1d915947733ac82f05b7880"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "ea20496472cc2db0c3173a1ab3482a5ad1ef04b01c4ddb10c4b028a28c017466"
+    root_url "https://github.com/msakai/homebrew-tap/releases/download/liblbfgsb-3.0_1"
+    sha256 cellar: :any,                 ventura:      "f9bd9c073f6cbec999b94dbf6933493dba98fcb7b7c298f487eaf8258fb3e2c7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "82beece0ace98ee84be8b1dcca68ab71345597b433fa7d07cc2fb143c832b632"
   end
 
   depends_on "gcc" # for gfortran
