@@ -21,7 +21,7 @@ class Toysolver < Formula
 
   def install
     system "cabal", "v2-update"
-    system "cabal", "v2-install", "-f", "BuildToyFMF", *std_cabal_v2_args
+    system "cabal", "v2-install", "-f", "BuildToyFMF", "-c", "optparse-applicative <0.18", *std_cabal_v2_args
   end
 
   test do
