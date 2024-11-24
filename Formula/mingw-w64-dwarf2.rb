@@ -17,6 +17,7 @@ class MingwW64Dwarf2 < Formula
   depends_on "isl"
   depends_on "libmpc"
   depends_on "mpfr"
+  depends_on "zstd"
 
   resource "binutils" do
     url "https://ftp.gnu.org/gnu/binutils/binutils-2.41.tar.xz"
