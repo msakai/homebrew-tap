@@ -10,6 +10,13 @@ class MingwW64Dwarf2 < Formula
     regex(%r{url=.*?release/mingw-w64[._-]v?(\d+(?:\.\d+)+)\.t}i)
   end
 
+  bottle do
+    root_url "https://ghcr.io/v2/msakai/tap"
+    sha256 arm64_sequoia: "6f379ebb9c8e00955bbde324212c8641c73dc2d519d6f7b405052e478e45af38"
+    sha256 ventura:       "592b5857331690ffb1a91cf57ad4c8bbe8753fa2331fb18cc255b3a20f7fc4eb"
+    sha256 x86_64_linux:  "814719f6ff7cd683ccf4907b6bfb129f6374e1d2af059fea3486d317c8ec2ab1"
+  end
+
   # Apple's makeinfo is old and has bugs
   depends_on "texinfo" => :build
 
