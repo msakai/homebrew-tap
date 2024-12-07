@@ -5,6 +5,13 @@ class Printemps < Formula
   sha256 "8653f4fa5ba26fc2e5ab7dd3e437004b971471fa7a8d4a1e86ddb61cdf78fd07"
   license "MIT"
 
+  bottle do
+    root_url "https://ghcr.io/v2/msakai/tap"
+    sha256 cellar: :any,                 arm64_sequoia: "bb3ddb726a59f1d94852ab2ddaf74e206c96d3a55919006c15059032cbee08f1"
+    sha256 cellar: :any,                 ventura:       "c1d24ba8b1792569364d3413ed6dff4d55e9106db22d52cebd7b13080a2afeac"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "518d7ba95dcc9aaeae39b5562146c71d6f84bd8d2cd60df2ad436c03ced4e2f7"
+  end
+
   depends_on "cmake" => :build
   # We use gcc because cmake fails to find OpenMP with Apple clang
   depends_on "gcc"
