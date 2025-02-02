@@ -29,7 +29,7 @@ class Printemps < Formula
     end
 
     system "make", "-f", "makefile/Makefile.application", "CC=#{cc}", "CXX=#{cxx}"
-    bin.install "build/application/Release/mps_solver.exe"
+    bin.install "build/application/Release/mps_solver"
 
     include.install Dir["printemps/*"]
     pkgshare.install "example"
@@ -67,14 +67,14 @@ class Printemps < Formula
        PL bound     y
       ENDATA
     EOF
-    system bin/"mps_solver.exe", "test.mps"
+    system bin/"mps_solver", "test.mps"
     h = JSON.parse(File.read("incumbent.json"))
     assert_equal h["objective"], -2.0
 
     gcc = Formula["gcc"]
     gcc_major_ver = gcc.any_installed_version.major
     cxx = gcc.opt_bin/"g++-#{gcc_major_ver}"
-    system cxx, "-std=c++17", "-I#{include}", "-O3", pkgshare/"example"/"knapsack.cpp", "-o", "knapsack.exe"
-    system "./knapsack.exe"
+    system cxx, "-std=c++17", "-I#{include}", "-O3", pkgshare/"example"/"knapsack.cpp", "-o", "knapsack"
+    system "./knapsack"
   end
 end
