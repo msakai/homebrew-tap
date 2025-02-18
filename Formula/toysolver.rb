@@ -1,8 +1,8 @@
 class Toysolver < Formula
   desc "Assorted decision procedures for SAT, SMT, Max-SAT, PB, MIP, etc."
   homepage "https://github.com/msakai/toysolver/"
-  url "https://hackage.haskell.org/package/toysolver-0.8.1/toysolver-0.8.1.tar.gz"
-  sha256 "aa7815204872ae243257262c55157155a6dffe4663d0219278640c8433e9c301"
+  url "https://hackage.haskell.org/package/toysolver-0.9.0/toysolver-0.9.0.tar.gz"
+  sha256 "398a8ee9b57bddac36dd5a31c8c774916f52959cc8f580a6082eecb52b4744a3"
   license "GPL-3.0-or-later"
   head "https://github.com/msakai/toysolver.git"
 
@@ -21,7 +21,7 @@ class Toysolver < Formula
 
   def install
     system "cabal", "v2-update"
-    system "cabal", "v2-install", "-f", "BuildToyFMF", "-c", "optparse-applicative <0.18", *std_cabal_v2_args
+    system "cabal", "v2-install", "-f", "BuildToyFMF", *std_cabal_v2_args
   end
 
   test do
