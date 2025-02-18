@@ -7,9 +7,10 @@ class Toysolver < Formula
   head "https://github.com/msakai/toysolver.git"
 
   bottle do
-    root_url "https://github.com/msakai/homebrew-tap/releases/download/toysolver-0.8.1"
-    sha256 cellar: :any_skip_relocation, ventura:      "e0e4dea32e6cf08d7d4158c05ba40edf8b1adb3f6b8b047df2aa87ea9e21931a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "43f1823f001a7db1ebf6cf3dd03da0098644300dbfab445d84a140d817a5b145"
+    root_url "https://ghcr.io/v2/msakai/tap"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d16b6dec2784e431005fe00c68baea09f91a5145b3390fbe98e00b522347287a"
+    sha256 cellar: :any_skip_relocation, ventura:       "e8cda6838481ff062cec66bcf5163b9f005e277d2b45a21ff01c193b09af0e0f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bdf912ad93795b79dab9d56d00c0daa70eee813156d7c777e16f23284d8164d1"
   end
 
   depends_on "cabal-install" => :build
