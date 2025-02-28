@@ -221,7 +221,7 @@ class MingwW64Dwarf2 < Formula
       assert_match "file format pei-#{outarch}", shell_output("#{bin}/#{target}-objdump -a test.exe")
 
       system "#{bin}/#{target}-widl", "example.idl"
-      assert_predicate testpath/"example_s.c", :exist?, "example_s.c should have been created"
+      assert_path_exists testpath/"example_s.c", "example_s.c should have been created"
     end
   end
 end
