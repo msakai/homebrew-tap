@@ -20,12 +20,12 @@ class Liblbfgsb < Formula
   depends_on "openblas"
 
   patch :p1 do
-    url "http://nonempty.org/software/haskell-l-bfgs-b/silence.diff"
+    url "https://web.archive.org/web/20220123064931/http://nonempty.org/software/haskell-l-bfgs-b/silence.diff"
     sha256 "2d5cd46b869b569e72a6d81c45e17224603acf1840263cd394f7ed972f46a621"
   end
 
   patch :p1 do
-    url "http://nonempty.org/software/haskell-l-bfgs-b/replace-linpack-with-lapack.diff"
+    url "https://web.archive.org/web/20220123064931/http://nonempty.org/software/haskell-l-bfgs-b/replace-linpack-with-lapack.diff"
     sha256 "1466cb7f79d233acfd882e0ed4bc75ecabd7d509a071c4997139505de068e2b2"
   end
 
