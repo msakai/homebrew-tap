@@ -12,9 +12,10 @@ class MingwW64Dwarf2 < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/msakai/tap"
-    sha256 arm64_sequoia: "6f379ebb9c8e00955bbde324212c8641c73dc2d519d6f7b405052e478e45af38"
-    sha256 ventura:       "592b5857331690ffb1a91cf57ad4c8bbe8753fa2331fb18cc255b3a20f7fc4eb"
-    sha256 x86_64_linux:  "814719f6ff7cd683ccf4907b6bfb129f6374e1d2af059fea3486d317c8ec2ab1"
+    rebuild 1
+    sha256 arm64_sequoia: "3a76ec7d8c25aea10db84a8153e8f28936183d5dd8d1fb9abbfb923fe1f386ab"
+    sha256 ventura:       "a2462ad230dbdc874a96ee677f7d4558395dfc9dc62097a595743a6a988297d5"
+    sha256 x86_64_linux:  "8803e9873d002bbf2fa8df0cd07e4e7f57e9238cc27f3f95f5b80a5466e4269b"
   end
 
   # Apple's makeinfo is old and has bugs
