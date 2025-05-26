@@ -1,8 +1,8 @@
 class Printemps < Formula
   desc "C++ metaheuristics modeler/solver for general integer optimization problems"
   homepage "https://snowberryfield.github.io/printemps/"
-  url "https://github.com/snowberryfield/printemps/archive/refs/tags/v2.6.1.tar.gz"
-  sha256 "c7cc56013640c231da01280f2017ef57b6f5c861f410bf6e292ad25cfbbee453"
+  url "https://github.com/snowberryfield/printemps/archive/refs/tags/v2.6.2.tar.gz"
+  sha256 "bea395a61fc883b0836fa21eb5dab0d94a543eb849e62c443cd6d47edf0d8de2"
   license "MIT"
 
   bottle do
@@ -23,7 +23,7 @@ class Printemps < Formula
     cxx = gcc.opt_bin/"g++-#{gcc_major_ver}"
 
     if Hardware::CPU.arm? && OS.mac?
-      inreplace "cmake/application/CMakeLists.txt", "-march=native", "-mcpu=apple-m1"
+      inreplace "cmake/application/CMakeLists.txt", "-mcpu=native", "-mcpu=apple-m1"
     elsif build.bottle?
       inreplace "cmake/application/CMakeLists.txt", "-march=native", "-march=#{Hardware.oldest_cpu}"
     end
