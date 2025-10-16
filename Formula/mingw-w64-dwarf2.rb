@@ -4,6 +4,7 @@ class MingwW64Dwarf2 < Formula
   url "https://downloads.sourceforge.net/project/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v11.0.1.tar.bz2"
   sha256 "3f66bce069ee8bed7439a1a13da7cb91a5e67ea6170f21317ac7f5794625ee10"
   license "ZPL-2.1"
+  revision 1
 
   livecheck do
     url :stable
@@ -28,14 +29,14 @@ class MingwW64Dwarf2 < Formula
   depends_on "zstd"
 
   resource "binutils" do
-    url "https://ftp.gnu.org/gnu/binutils/binutils-2.41.tar.xz"
-    mirror "https://ftpmirror.gnu.org/binutils/binutils-2.41.tar.xz"
+    url "https://ftpmirror.gnu.org/binutils/binutils-2.41.tar.xz"
+    mirror "https://ftp.gnu.org/gnu/binutils/binutils-2.41.tar.xz"
     sha256 "ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450"
   end
 
   resource "gcc" do
-    url "https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz"
-    mirror "https://ftpmirror.gnu.org/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz"
+    url "https://ftpmirror.gnu.org/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz"
+    mirror "https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz"
     sha256 "a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9"
   end
 
