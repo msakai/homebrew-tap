@@ -1,24 +1,17 @@
 class MingwW64Dwarf2 < Formula
   desc "Minimalist GNU for Windows and GCC cross-compilers"
   homepage "https://sourceforge.net/projects/mingw-w64/"
-  url "https://downloads.sourceforge.net/project/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v11.0.1.tar.bz2"
-  sha256 "3f66bce069ee8bed7439a1a13da7cb91a5e67ea6170f21317ac7f5794625ee10"
+  url "https://downloads.sourceforge.net/project/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v13.0.0.tar.bz2"
+  sha256 "5afe822af5c4edbf67daaf45eec61d538f49eef6b19524de64897c6b95828caf"
   license "ZPL-2.1"
-  revision 1
 
   livecheck do
     url :stable
     regex(%r{url=.*?release/mingw-w64[._-]v?(\d+(?:\.\d+)+)\.t}i)
   end
 
-  bottle do
-    root_url "https://ghcr.io/v2/msakai/tap"
-    rebuild 1
-    sha256 arm64_sequoia: "3a76ec7d8c25aea10db84a8153e8f28936183d5dd8d1fb9abbfb923fe1f386ab"
-    sha256 ventura:       "a2462ad230dbdc874a96ee677f7d4558395dfc9dc62097a595743a6a988297d5"
-    sha256 x86_64_linux:  "8803e9873d002bbf2fa8df0cd07e4e7f57e9238cc27f3f95f5b80a5466e4269b"
-  end
-
+  # binutils searches for zstd using pkg-config
+  depends_on "pkgconf" => :build
   # Apple's makeinfo is old and has bugs
   depends_on "texinfo" => :build
 
@@ -28,16 +21,18 @@ class MingwW64Dwarf2 < Formula
   depends_on "mpfr"
   depends_on "zstd"
 
+  uses_from_macos "zlib"
+
   resource "binutils" do
-    url "https://ftpmirror.gnu.org/binutils/binutils-2.41.tar.xz"
-    mirror "https://ftp.gnu.org/gnu/binutils/binutils-2.41.tar.xz"
-    sha256 "ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450"
+    url "https://ftpmirror.gnu.org/gnu/binutils/binutils-2.45.tar.bz2"
+    mirror "https://ftp.gnu.org/gnu/binutils/binutils-2.45.tar.bz2"
+    sha256 "1393f90db70c2ebd785fb434d6127f8888c559d5eeb9c006c354b203bab3473e"
   end
 
   resource "gcc" do
-    url "https://ftpmirror.gnu.org/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz"
-    mirror "https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz"
-    sha256 "a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9"
+    url "https://ftpmirror.gnu.org/gnu/gcc/gcc-15.2.0/gcc-15.2.0.tar.xz"
+    mirror "https://ftp.gnu.org/gnu/gcc/gcc-15.2.0/gcc-15.2.0.tar.xz"
+    sha256 "438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e"
   end
 
   def target_archs
@@ -57,6 +52,8 @@ class MingwW64Dwarf2 < Formula
           --enable-targets=#{target}
           --disable-multilib
           --disable-nls
+          --with-system-zlib
+          --with-zstd
         ]
         mkdir "build-#{arch}" do
           system "../configure", *args
@@ -84,14 +81,15 @@ class MingwW64Dwarf2 < Formula
         --with-sysroot=#{arch_dir}
         --prefix=#{arch_dir}
         --with-bugurl=#{tap.issues_url}
-        --enable-languages=c,c++,fortran
+        --enable-languages=c,c++,objc,obj-c++,fortran
         --with-ld=#{arch_dir}/bin/#{target}-ld
         --with-as=#{arch_dir}/bin/#{target}-as
         --with-gmp=#{Formula["gmp"].opt_prefix}
         --with-mpfr=#{Formula["mpfr"].opt_prefix}
         --with-mpc=#{Formula["libmpc"].opt_prefix}
         --with-isl=#{Formula["isl"].opt_prefix}
-        --with-zstd=no
+        --with-system-zlib
+        --with-zstd
         --disable-multilib
         --disable-nls
         --enable-threads=posix
@@ -177,21 +175,21 @@ class MingwW64Dwarf2 < Formula
   end
 
   test do
-    (testpath/"hello.c").write <<~EOS
+    (testpath/"hello.c").write <<~C
       #include <stdio.h>
       #include <windows.h>
       int main() { puts("Hello world!");
         MessageBox(NULL, TEXT("Hello GUI!"), TEXT("HelloMsg"), 0); return 0; }
-    EOS
-    (testpath/"hello.cc").write <<~EOS
+    C
+    (testpath/"hello.cc").write <<~CPP
       #include <iostream>
       int main() { std::cout << "Hello, world!" << std::endl; return 0; }
-    EOS
-    (testpath/"hello.f90").write <<~EOS
+    CPP
+    (testpath/"hello.f90").write <<~FORTRAN
       program hello ; print *, "Hello, world!" ; end program hello
-    EOS
+    FORTRAN
     # https://docs.microsoft.com/en-us/windows/win32/rpc/using-midl
-    (testpath/"example.idl").write <<~EOS
+    (testpath/"example.idl").write <<~MIDL
       [
         uuid(ba209999-0c6c-11d2-97cf-00c04f8eea45),
         version(1.0)
@@ -205,7 +203,7 @@ class MingwW64Dwarf2 < Formula
             [out] int outArray[INT_ARRAY_LEN]
         );
       }
-    EOS
+    MIDL
 
     ENV["LC_ALL"] = "C"
     ENV.remove_macosxsdk if OS.mac?
@@ -213,16 +211,16 @@ class MingwW64Dwarf2 < Formula
       target = "#{arch}-w64-mingw32"
       outarch = (arch == "i686") ? "i386" : "x86-64"
 
-      system "#{bin}/#{target}-gcc", "-o", "test.exe", "hello.c"
+      system bin/"#{target}-gcc", "-o", "test.exe", "hello.c"
       assert_match "file format pei-#{outarch}", shell_output("#{bin}/#{target}-objdump -a test.exe")
 
-      system "#{bin}/#{target}-g++", "-o", "test.exe", "hello.cc"
+      system bin/"#{target}-g++", "-o", "test.exe", "hello.cc"
       assert_match "file format pei-#{outarch}", shell_output("#{bin}/#{target}-objdump -a test.exe")
 
-      system "#{bin}/#{target}-gfortran", "-o", "test.exe", "hello.f90"
+      system bin/"#{target}-gfortran", "-o", "test.exe", "hello.f90"
       assert_match "file format pei-#{outarch}", shell_output("#{bin}/#{target}-objdump -a test.exe")
 
-      system "#{bin}/#{target}-widl", "example.idl"
+      system bin/"#{target}-widl", "example.idl"
       assert_path_exists testpath/"example_s.c", "example_s.c should have been created"
     end
   end
