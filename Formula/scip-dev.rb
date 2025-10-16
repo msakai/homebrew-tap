@@ -6,6 +6,12 @@ class ScipDev < Formula
   version "10.0.0"
   license "Apache-2.0"
 
+  bottle do
+    root_url "https://ghcr.io/v2/msakai/tap"
+    sha256 cellar: :any,                 arm64_sequoia: "fd918ddacc01ebdefe8b89db1d7bb611797b29eeff5f6e1931cb512cbf999698"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3cc528155af3c8ddff6a59194c0c0c3e80bdfc1fe61a6325ceb5216fe7b3bcfb"
+  end
+
   depends_on "cmake" => :build
   depends_on "boost"
   depends_on "cppad"
