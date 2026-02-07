@@ -4,6 +4,7 @@ This repository provides custom [Homebrew](https://brew.sh/) Tap for software th
 
 ## List of formulae
 
+* [CPL](Formula/cpl.rb) - An interpreter of Hagino's Categorical Programming Language (CPL). ([Github](https://github.com/msakai/cpl), [Hackage](https://hackage.haskell.org/package/CPL))
 * [toysolver](Formula/toysolver.rb) - Solvers for SAT, SMT, Max-SAT, PB, MIP, etc. developed by me. ([Github](https://github.com/msakai/toysolver), [Hackage](https://hackage.haskell.org/package/toysolver))
 * [liblbfgsb](Formula/liblbfgsb.rb) - [L-BFGS-B](https://users.iems.northwestern.edu/~nocedal/lbfgsb.html) library for large-scale bound-constrained optimization, packaged by me to make Haskell's [l-bfgs-b](http://nonempty.org/software/haskell-l-bfgs-b) package ([Hackage](https://hackage.haskell.org/package/l-bfgs-b)) easier to use.
 * [mingw-w64-dwarf2](Formula/mingw-w64-dwarf2.rb) - Minimalist GNU for Windows and GCC cross-compilers
