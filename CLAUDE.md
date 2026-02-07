@@ -24,6 +24,7 @@ brew test <name>
 
 ## Formulae Overview
 
+- **cpl** An interpreter of Hagino's Categorical Programming Language (CPL); built with `cabal`
 - **toysolver** — Haskell-based SAT/SMT/Max-SAT/PB/MIP solvers; built with `cabal`
 - **liblbfgsb** — Fortran L-BFGS-B optimization library; custom build with `gfortran`, produces both shared and static libs
 - **printemps** — C++ metaheuristics solver; uses `cmake` via `make` wrapper, requires GCC for OpenMP
