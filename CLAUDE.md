@@ -30,6 +30,20 @@ brew test <name>
 - **mingw-w64-dwarf2** — MinGW-w64 cross-compiler targeting i686 with DWARF2 exceptions (differs from upstream `mingw-w64` which uses SJLJ); multi-stage bootstrap build (binutils → headers → gcc stage1 → crt → winpthreads → gcc full)
 - **scip-dev** — SCIP mixed integer programming solver; built from a specific git revision of the v10-minor branch using `cmake`
 
+## Updating GitHub Actions Workflows
+
+Homebrew does not provide a built-in command to update workflows for an existing tap. `brew tap-new` only generates templates for new taps. To update workflows to match the latest Homebrew template:
+
+1. Generate a fresh tap in a temporary namespace and compare:
+   ```bash
+   brew tap-new --no-git --github-packages tmp/test-tap
+   diff .github/workflows/tests.yml "$(brew --repository)/Library/Taps/tmp/test-tap/.github/workflows/tests.yml"
+   diff .github/workflows/publish.yml "$(brew --repository)/Library/Taps/tmp/test-tap/.github/workflows/publish.yml"
+   brew untap tmp/test-tap
+   ```
+2. Apply the relevant changes (e.g., runner OS matrix updates) manually.
+3. The canonical template source is [`tap-new.rb`](https://github.com/Homebrew/brew/blob/main/Library/Homebrew/dev-cmd/tap-new.rb).
+
 ## Conventions
 
 - Bottles are hosted on GHCR at `ghcr.io/v2/msakai/tap`
