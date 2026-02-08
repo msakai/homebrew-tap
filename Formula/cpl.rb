@@ -6,6 +6,12 @@ class Cpl < Formula
   license "GPL-3.0-or-later"
   head "https://github.com/msakai/cpl.git", branch: "master"
 
+  bottle do
+    root_url "https://ghcr.io/v2/msakai/tap"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "3dea6c9c6e1c873e7e1a7b6fe183d4b0432c7af9a570f74e0acdcda20240c2bd"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "195c885699ac41bb7b23b7e2c315662280df1a0f9eaa0a9d7f8497bd3c3a6aae"
+  end
+
   depends_on "cabal-install" => :build
   depends_on "ghc@9.10" => :build
 
