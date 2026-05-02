@@ -1,8 +1,8 @@
 class Printemps < Formula
   desc "C++ metaheuristics modeler/solver for general integer optimization problems"
   homepage "https://snowberryfield.github.io/printemps/"
-  url "https://github.com/snowberryfield/printemps/archive/refs/tags/v2.6.2.tar.gz"
-  sha256 "bea395a61fc883b0836fa21eb5dab0d94a543eb849e62c443cd6d47edf0d8de2"
+  url "https://github.com/snowberryfield/printemps/archive/refs/tags/v2.8.0.tar.gz"
+  sha256 "87bba2552bef5e33dc4e02b24b6c3975e06693f537e5c25d76eb1a3099388118"
   license "MIT"
 
   bottle do
@@ -30,6 +30,7 @@ class Printemps < Formula
 
     system "make", "-f", "makefile/Makefile.application", "CC=#{cc}", "CXX=#{cxx}"
     bin.install "build/application/Release/mps_solver"
+    bin.install "build/application/Release/opb_solver"
 
     include.install Dir["printemps/*"]
     pkgshare.install "example"
