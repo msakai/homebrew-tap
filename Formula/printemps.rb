@@ -7,9 +7,9 @@ class Printemps < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/msakai/tap"
-    sha256 cellar: :any,                 arm64_sequoia: "21128e015a0aeb2a93dff80847274e0a669a6573e2d80dce4d68d6e791f72dc0"
-    sha256 cellar: :any,                 ventura:       "ce8211ddb7914eaa534b8ccfe8f0052838fcb01761c658a3d1a021e5fcb6453b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "14deaa8f9fa41b4d532924457377252ed33b0799f838f8adb87269e706e86096"
+    sha256 cellar: :any,                 arm64_tahoe:  "9aa4d14e9540e7f8698e75b25e0ea24e80daba7920c4a2e7aa5da988148f6e1d"
+    sha256 cellar: :any,                 sequoia:      "72efa5f43b77a9cb6603cc56e98b1118730c867487605cefdcf09732b0efcd2f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "a9b2ad2f86aef0ca098393c121996159a617004ebe35278c119fea34622b9da6"
   end
 
   depends_on "cmake" => :build
