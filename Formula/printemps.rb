@@ -4,6 +4,7 @@ class Printemps < Formula
   url "https://github.com/snowberryfield/printemps/archive/refs/tags/v2.8.0.tar.gz"
   sha256 "87bba2552bef5e33dc4e02b24b6c3975e06693f537e5c25d76eb1a3099388118"
   license "MIT"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/msakai/tap"
@@ -29,6 +30,7 @@ class Printemps < Formula
     end
 
     system "make", "-f", "makefile/Makefile.application", "CC=#{cc}", "CXX=#{cxx}"
+    bin.install "build/application/Release/printemps"
     bin.install "build/application/Release/mps_solver"
     bin.install "build/application/Release/opb_solver"
 
@@ -68,7 +70,7 @@ class Printemps < Formula
        PL bound     y
       ENDATA
     EOF
-    system bin/"mps_solver", "test.mps"
+    system bin/"printemps", "test.mps"
     h = JSON.parse(File.read("incumbent.json"))
     assert_equal h["objective"], -2.0
 
