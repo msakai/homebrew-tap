@@ -6,6 +6,12 @@ class Opensmt2 < Formula
   license "BSD-3-Clause"
   head "https://github.com/usi-verification-and-security/opensmt.git", branch: "master"
 
+  bottle do
+    root_url "https://github.com/msakai/homebrew-tap/releases/download/opensmt2-2.9.2"
+    sha256 cellar: :any, arm64_tahoe:  "cecd8c470cb4e93d723364468a12100430100fcd50fc69a6614bb7141f415184"
+    sha256 cellar: :any, x86_64_linux: "2ac22d4e876b18bee83a1345774c988c6788d552a0cec47ae6c110f54aa92836"
+  end
+
   depends_on "bison" => :build
   depends_on "cmake" => :build
   depends_on "flex" => :build
