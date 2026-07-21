@@ -4,6 +4,7 @@ class MingwW64Dwarf2 < Formula
   url "https://downloads.sourceforge.net/project/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v13.0.0.tar.bz2"
   sha256 "5afe822af5c4edbf67daaf45eec61d538f49eef6b19524de64897c6b95828caf"
   license "ZPL-2.1"
+  revision 1
 
   livecheck do
     url :stable
@@ -28,7 +29,9 @@ class MingwW64Dwarf2 < Formula
   depends_on "mpfr"
   depends_on "zstd"
 
-  uses_from_macos "zlib"
+  on_linux do
+    depends_on "zlib-ng-compat"
+  end
 
   resource "binutils" do
     url "https://ftpmirror.gnu.org/gnu/binutils/binutils-2.45.tar.bz2"
