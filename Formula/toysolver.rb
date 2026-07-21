@@ -8,9 +8,8 @@ class Toysolver < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/msakai/tap"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d16b6dec2784e431005fe00c68baea09f91a5145b3390fbe98e00b522347287a"
-    sha256 cellar: :any_skip_relocation, ventura:       "e8cda6838481ff062cec66bcf5163b9f005e277d2b45a21ff01c193b09af0e0f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bdf912ad93795b79dab9d56d00c0daa70eee813156d7c777e16f23284d8164d1"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "44fb26fadf8a9f2ed0a737f9be4eb09c8c02c9d0e534d508771edeef24a7869a"
+    sha256 cellar: :any,                 x86_64_linux: "b51af2122cb339c2d6751058512d1c343869170387a2e3540c407664804c1f08"
   end
 
   depends_on "cabal-install" => :build
