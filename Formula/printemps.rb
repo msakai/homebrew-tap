@@ -1,10 +1,9 @@
 class Printemps < Formula
   desc "C++ metaheuristics modeler/solver for general integer optimization problems"
   homepage "https://snowberryfield.github.io/printemps/"
-  url "https://github.com/snowberryfield/printemps/archive/refs/tags/v2.8.0.tar.gz"
-  sha256 "87bba2552bef5e33dc4e02b24b6c3975e06693f537e5c25d76eb1a3099388118"
+  url "https://github.com/snowberryfield/printemps/archive/refs/tags/v2.9.0.tar.gz"
+  sha256 "f9ca2d0176ae5bc1b3deffe1f7318b3a568ec9512be208d54367747e37f9550c"
   license "MIT"
-  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/msakai/tap"
@@ -24,15 +23,15 @@ class Printemps < Formula
     cxx = gcc.opt_bin/"g++-#{gcc_major_ver}"
 
     if Hardware::CPU.arm? && OS.mac?
-      inreplace "cmake/application/CMakeLists.txt", "-mcpu=native", "-mcpu=apple-m1"
+      cpu_arch = "apple-m1"
     elsif build.bottle?
-      inreplace "cmake/application/CMakeLists.txt", "-march=native", "-march=#{Hardware.oldest_cpu}"
+      cpu_arch = Hardware.oldest_cpu
     end
 
-    system "make", "-f", "makefile/Makefile.application", "CC=#{cc}", "CXX=#{cxx}"
+    system "make", "application", "extra", "CC=#{cc}", "CXX=#{cxx}", "CPU_ARCH=#{cpu_arch}"
     bin.install "build/application/Release/printemps"
-    bin.install "build/application/Release/mps_solver"
-    bin.install "build/application/Release/opb_solver"
+    libexec.install "build/extra/Release/maxsat_evaluation_solver"
+    libexec.install "build/extra/Release/pb_competition_solver"
 
     include.install Dir["printemps/*"]
     pkgshare.install "example"
