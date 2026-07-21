@@ -51,7 +51,7 @@ class Liblbfgsb < Formula
     end
 
     system "gfortran", "-O2", "-shared", *shared_option, "-fPIC", *units.map { |name| "#{name}.f" },
-           "-L#{Formula["openblas"].opt_lib}", "-lopenblas"
+           "-L#{formula_opt_lib("openblas")}", "-lopenblas"
 
     units.each do |name|
       system "gfortran", "-O2", "-c", "#{name}.f"
