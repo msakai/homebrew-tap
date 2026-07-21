@@ -1,10 +1,10 @@
 class Toysolver < Formula
   desc "Assorted decision procedures for SAT, SMT, Max-SAT, PB, MIP, etc."
   homepage "https://github.com/msakai/toysolver/"
-  url "https://hackage.haskell.org/package/toysolver-0.9.0/toysolver-0.9.0.tar.gz"
-  sha256 "398a8ee9b57bddac36dd5a31c8c774916f52959cc8f580a6082eecb52b4744a3"
+  url "https://hackage.haskell.org/package/toysolver-0.10.0/toysolver-0.10.0.tar.gz"
+  sha256 "27265a4a8666bc62adf587544cb42ef0fc68360f929bf3f6932ace77eb961d21"
   license "GPL-3.0-or-later"
-  head "https://github.com/msakai/toysolver.git"
+  head "https://github.com/msakai/toysolver.git", branch: "master"
 
   bottle do
     root_url "https://ghcr.io/v2/msakai/tap"
