@@ -13,9 +13,9 @@ class MingwW64Dwarf2 < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/msakai/tap"
-    sha256 arm64_sequoia: "6eaf06b054e1e5c2adf92f96f59028b337d7ed0dd75e510af3d488aaaae0ec82"
-    sha256 ventura:       "ac82dc0283cef34f3ebb3baf5b7fa503a8e8db2cd0717997dae365aa4d3a054c"
-    sha256 x86_64_linux:  "9732d66f8c562cb62e6a15e91625168ee990de9eb87a902e3d12594dffbd9af0"
+    sha256 arm64_tahoe:  "c68683519c42100debde122406e0e5bfc933ab486bf7dd7384ea4c9ceb54b6a9"
+    sha256 sequoia:      "f50f649177dd2fb2261e58b1c45acbcdfd6fb26961523d5a9116814706996840"
+    sha256 x86_64_linux: "fd1993ba97ee19943399fe0506fc937fcd23e040eed159f4021a013eb62b640f"
   end
 
   # binutils searches for zstd using pkg-config
