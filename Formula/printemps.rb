@@ -1,8 +1,8 @@
 class Printemps < Formula
   desc "C++ metaheuristics modeler/solver for general integer optimization problems"
   homepage "https://snowberryfield.github.io/printemps/"
-  url "https://github.com/snowberryfield/printemps/archive/refs/tags/v2.9.0.tar.gz"
-  sha256 "f9ca2d0176ae5bc1b3deffe1f7318b3a568ec9512be208d54367747e37f9550c"
+  url "https://github.com/snowberryfield/printemps/archive/refs/tags/v2.10.0.tar.gz"
+  sha256 "e579b9c52b00d1f7d66cb8af729e639eeb77bc6f42221b876c6b9a34622dc3ca"
   license "MIT"
 
   bottle do
