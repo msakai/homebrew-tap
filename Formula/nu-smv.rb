@@ -5,6 +5,13 @@ class NuSmv < Formula
   sha256 "f1e11931f71d98aa9b84181eed67db584d7111100c2e967c904a31c15f823f60"
   license "LGPL-2.1-or-later"
 
+  bottle do
+    root_url "https://ghcr.io/v2/msakai/tap"
+    manifest_sha256 "daea0db3e8163ada490b7968dda50886e84bc6bc43d444387ec32ba90fc5d56e"
+    sha256 cellar: :any, arm64_tahoe:  "8d7740e8b5e9d840cbf6472730efcd45da73c73deaeafa28f36df3b3202e2af4"
+    sha256 cellar: :any, x86_64_linux: "f241192d41e806ee27904a5e9e2661bffa1f1a73f3b5c4fec91fac71b411bb11"
+  end
+
   keg_only "it conflicts with `minisat`"
 
   depends_on "bison" => :build
